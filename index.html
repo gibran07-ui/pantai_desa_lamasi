@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desa Lamasia Pantai</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="css/templatemo-style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+            crossorigin="anonymous"></script>
+    <style type="text/css">
+        /* ============ desktop view ============ */
+        @media all and (min-width: 992px) {
+
+            .dropdown-menu li {
+                position: relative;
+            }
+
+            .dropdown-menu .submenu {
+                display: none;
+                position: absolute;
+                left: 100%;
+                top: -7px;
+            }
+
+            .dropdown-menu .submenu-left {
+                right: 100%;
+                left: auto;
+            }
+
+            .dropdown-menu > li:hover {
+                background-color: #f1f1f1
+            }
+
+            .dropdown-menu > li:hover > .submenu {
+                display: block;
+            }
+        }
+
+        /* ============ desktop view .end// ============ */
+
+        /* ============ small devices ============ */
+        @media (max-width: 991px) {
+
+            .dropdown-menu .dropdown-menu {
+                margin-left: 0.7rem;
+                margin-right: 0.7rem;
+                margin-bottom: .5rem;
+            }
+
+        }
+
+        /* ============ small devices .end// ============ */
+    </style>
+
+    <script type="text/javascript">
+        //	window.addEventListener("resize", function() {
+        //		"use strict"; window.location.reload();
+        //	});
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+
+            /////// Prevent closing from click inside dropdown
+            document.querySelectorAll('.dropdown-menu').forEach(function (element) {
+                element.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                });
+            })
+
+
+            // make it as accordion for smaller screens
+            if (window.innerWidth < 992) {
+
+                // close all inner dropdowns when parent is closed
+                document.querySelectorAll('.navbar .dropdown').forEach(function (everydropdown) {
+                    everydropdown.addEventListener('hidden.bs.dropdown', function () {
+                        // after dropdown is hidden, then find all submenus
+                        this.querySelectorAll('.submenu').forEach(function (everysubmenu) {
+                            // hide every submenu as well
+                            everysubmenu.style.display = 'none';
+                        });
+                    })
+                });
+
+                document.querySelectorAll('.dropdown-menu a').forEach(function (element) {
+                    element.addEventListener('click', function (e) {
+
+                        let nextEl = this.nextElementSibling;
+                        if (nextEl && nextEl.classList.contains('submenu')) {
+                            // prevent opening link if link needs to open dropdown
+                            e.preventDefault();
+                            console.log(nextEl);
+                            if (nextEl.style.display == 'block') {
+                                nextEl.style.display = 'none';
+                            } else {
+                                nextEl.style.display = 'block';
+                            }
+
+                        }
+                    });
+                })
+            }
+            // end if innerWidth
+
+        });
+        // DOMContentLoaded  end
+    </script>
+</head>
+
+<body>
+<!-- Page Loader -->
+<div id="loader-wrapper">
+    <div id="loader"></div>
+
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+</div>
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+            <i class="fas fa-film mr-2"></i>
+            Desa Lamasi Pantai
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                <!--li class="nav-item">
+                  <a class="nav-link nav-link-1 active" aria-current="page" href="index.html">Photos</a>
+                </li-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Profil
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" id="profil-sejarah_desa" href="#">Sejarah Desa</a>
+                        <a class="dropdown-item" id="profil-profil_wilayah_desa" href="#">Profil Wilayah Desa</a>
+                        <a class="dropdown-item" id="profil-profil_masyarakat_desa" href="#">Profil Masyarakat Desa</a>
+                        <a class="dropdown-item" id="profil-profil_potensi_desa" href="#">Profil Potensi Desa</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">Administrasi </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" id="administrasi-umum-umum" href="#">Umum</a>
+                            <ul class="submenu dropdown-menu">
+                                <li><a class="dropdown-item" id="administrasi-umum-peraturan_desa" href="#">Buku
+                                    Peraturan Desa</a></li>
+                                <li><a class="dropdown-item" id="administrasi-umum-keputusan_kepala_desa" href="#">Buku
+                                    Keputusan Kepala Desa</a></li>
+                                <li><a class="dropdown-item" id="administrasi-umum-inventaris_dan_kekayaan_desa"
+                                       href="#">Buku Inventaris & Kekayaan Desa</a></li>
+                                <li><a class="dropdown-item" id="administrasi-umum-aparat_pemerintahan_desa" href="#">Buku
+                                    Aparat Pemerintahan Desa</a></li>
+                                <li><a class="dropdown-item" id="administrasi-umum-tanah_kas_desa" href="#">Buku Tanah
+                                    Kas Desa</a></li>
+                                <li><a class="dropdown-item" id="administrasi-umum-tanah_di_desa" href="#">Buku Tanah di
+                                    Desa</a></li>
+                                <li><a class="dropdown-item" id="administrasi-umum-agenda" href="#">Buku Agenda</a></li>
+                                <li><a class="dropdown-item" id="administrasi-umum-ekspedisi" href="#">Buku
+                                    Ekspedisi</a></li>
+                                <li><a class="dropdown-item" id="administrasi-umum-lembaran_desa_dan_berita_desa"
+                                       href="#">Buku Lembaran Desa dan Berita Desa</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item" id="administrasi-keuangan_keuangan" href="#">Keuangan</a>
+                            <ul class="submenu dropdown-menu">
+                                <li><a class="dropdown-item" id="administrasi-keuangan-apb_desa" href="#">Buku APB
+                                    Desa</a></li>
+                                <li><a class="dropdown-item" id="administrasi-keuangan-rencana_anggaran_biaya" href="#">Buku
+                                    Rencana Anggaran Biaya</a></li>
+                                <li><a class="dropdown-item" id="administrasi-keuangan-kas_pembantu_kegiatan" href="#">Buku
+                                    Kas Pembantu Kegiatan</a></li>
+                                <li><a class="dropdown-item" id="administrasi-keuangan-kas_umum" href="#">Buku Kas
+                                    Umum</a></li>
+                                <li><a class="dropdown-item" id="administrasi-keuangan-kas_pembantu" href="#">Buku Kas
+                                    Pembantu</a></li>
+                                <li><a class="dropdown-item" id="administrasi-keuangan-bank_desa" href="#">Buku Bank
+                                    Desa</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item" id="administrasi-penduduk_penduduk" href="#">Penduduk</a>
+                            <ul class="submenu dropdown-menu">
+                                <li><a class="dropdown-item" id="administrasi-penduduk-mutasi_penduduk" href="#">Buku
+                                    Mutasi Penduduk Desa</a></li>
+                                <li><a class="dropdown-item" id="administrasi-penduduk-rekapitulasi_jumlah_penduduk"
+                                       href="#">Buku Rekapitulasi Jumlah Penduduk</a></li>
+                                <li><a class="dropdown-item" id="administrasi-penduduk-penduduk_sementara" href="#">Buku
+                                    Penduduk Sementara</a></li>
+                                <li><a class="dropdown-item" id="administrasi-penduduk-ktp_dan_buku_kk" href="#">Buku
+                                    KTP & Buku KK</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item" id="administrasi-pembangunan_pembangunan" href="#">Pembangunan</a>
+                            <ul class="submenu dropdown-menu">
+                                <li><a class="dropdown-item" id="administrasi-pembangunan-rencana_kerja_pembangunan"
+                                       href="#">Buku Rencana Kerja Pembangunan</a></li>
+                                <li><a class="dropdown-item" id="administrasi-pembangunan-kegiatan_pembangunan"
+                                       href="#">Buku Kegiatan Pembangunan</a></li>
+                                <li><a class="dropdown-item" id="administrasi-pembangunan-inventaris_hasil_pembangunan"
+                                       href="#">Buku Inventaris Hasil Pembangunan</a></li>
+                                <li><a class="dropdown-item" id="administrasi-pembangunan-kader_pemberdayaan_masyarakat"
+                                       href="#">Buku Kader Pemberdayaan Masyarakat</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item" id="administrasi-kelembagaan_kelembagaan" href="#">Kelembagaan</a>
+                            <ul class="submenu dropdown-menu">
+                                <li><a class="dropdown-item" id="administrasi-kelembagaan-anggota_pkk" href="#">Data
+                                    Anggota PKK</a></li>
+                                <li><a class="dropdown-item" id="administrasi-kelembagaan-anggota_lpmd" href="#">Data
+                                    Anggota LPMD</a></li>
+                                <li><a class="dropdown-item" id="administrasi-kelembagaan-anggota_karang_taruna"
+                                       href="#">Data Anggota Karang Taruna</a></li>
+                                <li><a class="dropdown-item" id="administrasi-kelembagaan-anggota_posyandu" href="#">Data
+                                    Anggota Posyandu</a></li>
+                                <li><a class="dropdown-item" id="administrasi-kelembagaan-anggota_bpd" href="#">Data
+                                    Anggota BPD</a></li>
+                                <li><a class="dropdown-item" id="administrasi-kelembagaan-lembaga_adat" href="#">Data
+                                    Lembaga Adat</a></li>
+                                <li><a class="dropdown-item" id="administrasi-kelembagaan-keputusan_bpd" href="#">Data
+                                    Keputusan BPD</a></li>
+                                <li><a class="dropdown-item" id="administrasi-kelembagaan-kegiatan_bpd" href="#">Data
+                                    Kegiatan BPD</a></li>
+                                <li><a class="dropdown-item" id="administrasi-kelembagaan-agenda_bpd" href="#">Data
+                                    Agenda BPD</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <!--          <li class="nav-item dropdown">-->
+                <!--            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                <!--              Pelayanan-->
+                <!--            </a>-->
+                <!--            <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+                <!--              <a class="dropdown-item" id="pelayanan-umum" href="#">Umum</a>-->
+                <!--              <a class="dropdown-item" id="pelayanan-kependudukan" href="#">Kependudukan</a>-->
+                <!--              <a class="dropdown-item" id="pelayanan-nikah" href="#">Nikah</a>-->
+                <!--              <a class="dropdown-item" id="pelayanan-pertanahan" href="#">Pertanahan</a>-->
+                <!--            </div>-->
+                <!--          </li>-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">Pelayanan </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" id="administrasi-umum-umum" href="#">Umum</a>
+                            <ul class="submenu dropdown-menu">
+                                <li><a class="dropdown-item" id="administrasi-umum-peraturan_desa" href="#">Surat
+                                    keterangan usaha</a></li>
+                                <li><a class="dropdown-item" id="administrasi-umum-keputusan_kepala_desa" href="#">Surat
+                                    keterangan tempat usaha</a></li>
+                                <li><a class="dropdown-item" id="administrasi-umum-inventaris_dan_kekayaan_desa"
+                                       href="#">Surat keterangan pengantar barang</a></li>
+                                <li><a class="dropdown-item" id="administrasi-umum-aparat_pemerintahan_desa" href="#">Surat
+                                    keterangan pengantar ternak</a></li>
+                                <li><a class="dropdown-item" id="administrasi-umum-tanah_kas_desa" href="#">Surat
+                                    keterangan tidak mampu (sekolah)</a></li>
+                                <li><a class="dropdown-item" id="administrasi-umum-tanah_di_desa" href="#">Surat
+                                    keterangan usaha (umum)</a></li>
+                                <li><a class="dropdown-item" id="administrasi-umum-agenda" href="#">Surat keterangan
+                                    rumah tangga miskin sekali</a></li>
+                                <li><a class="dropdown-item" id="administrasi-umum-ekspedisi" href="#">Surat keterangan
+                                    penghasilan orang tua</a></li>
+                                <li><a class="dropdown-item" id="administrasi-umum-lembaran_desa_dan_berita_desa"
+                                       href="#">Permohonan izin keramain pesta</a></li>
+                                <li><a class="dropdown-item" id="administrasi-umum-lembaran_desa_dan_berita_desa"
+                                       href="#">Surat pengantar SKCK</a></li>
+                                <li><a class="dropdown-item" id="administrasi-umum-lembaran_desa_dan_berita_desa"
+                                       href="#">Surat keteranga ahli waris</a></li>
+                                <li><a class="dropdown-item" id="administrasi-umum-lembaran_desa_dan_berita_desa"
+                                       href="#">Surat keterangan bepergian</a></li>
+                                <li><a class="dropdown-item" id="administrasi-umum-lembaran_desa_dan_berita_desa"
+                                       href="#">Surat keterangan tidak bedara di tempat</a></li>
+                                <li><a class="dropdown-item" id="administrasi-umum-lembaran_desa_dan_berita_desa"
+                                       href="#">Surat keterangan beda identitas</a></li>
+                                <li><a class="dropdown-item" id="administrasi-umum-lembaran_desa_dan_berita_desa"
+                                       href="#">Surat keterangan lainnya</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item" id="administrasi-keuangan_keuangan" href="#">Kependudukan</a>
+                            <ul class="submenu dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" id="administrasi-keuangan-apb_desa" href="#">Biodata
+                                        penduduk</a>
+                                    <ul class="submenu dropdown-menu">
+                                        <li><a class="dropdown-item" id="administrasi-umum-peraturan_desa" href="#">Formulir
+                                            Kartu Keluarga(Pengganti F-1.01)</a></li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-keputusan_kepala_desa"
+                                               href="#">Formulir Pendaftaran Peristiwa Kependudukan(F-1.02)</a></li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-inventaris_dan_kekayaan_desa"
+                                               href="#">Surat Pernyataan Tidak Memiliki Dokumen Kependudukan
+                                            (F-1.04)</a></li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-aparat_pemerintahan_desa"
+                                               href="#">Surat Pernyataan Perubahan Data Kependudukan (F-1.05)</a></li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-tanah_kas_desa" href="#">Formulir
+                                            Biodata Penduduk Untuk Perubahan Data WNI (F-1.06)</a></li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-tanah_di_desa" href="#">Surat
+                                            Kuasa Dalam Pelayanan Administrasi Kependudukan (F-1.07)</a></li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-keputusan_kepala_desa"
+                                               href="#">Formulir Permohonan KK Baru WNI(F-1.15)</a></li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-inventaris_dan_kekayaan_desa"
+                                               href="#">Formulir Permohonan Perubahan KK Baru WNI (F-1.16)</a></li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-aparat_pemerintahan_desa"
+                                               href="#">Formulir Permohonan KTP (F-1.21)</a></li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-tanah_kas_desa" href="#">Surat
+                                            Keterangan Domisili</a></li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-tanah_di_desa" href="#">Surat
+                                            Keterangan Hilang Kartu Keluarga</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" id="administrasi-keuangan-rencana_anggaran_biaya" href="#">Pindah</a>
+                                    <ul class="submenu dropdown-menu">
+                                        <li><a class="dropdown-item" id="administrasi-umum-peraturan_desa" href="#">Surat
+                                            keterangan pindah</a></li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-keputusan_kepala_desa"
+                                               href="#">Formulir Pendaftaran Perpindahan Penduduk (F-1.03)</a></li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-inventaris_dan_kekayaan_desa"
+                                               href="#">Surat Keterangan Pindah Datang WNI Dalam Satu Desa/Kelurahan
+                                            (F-1.24)</a></li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-aparat_pemerintahan_desa"
+                                               href="#">Surat Keterangan Pindah WNI Antar Desa/Kelurahan (F-1.26)</a>
+                                        </li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-tanah_kas_desa" href="#">Surat
+                                            Keterangan Pindah Datang WNI Antar Desa/Kelurahan (F-1.28)</a></li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-tanah_di_desa" href="#">Surat
+                                            Keterangan Pindah WNI Antar Kecamatan (F-1.30)</a></li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-keputusan_kepala_desa"
+                                               href="#">Surat Keterangan Pindah Datang WNI Antar Kecamatan(F-1.32)</a>
+                                        </li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-inventaris_dan_kekayaan_desa"
+                                               href="#">Surat Pengantar Pindah (F-1.33)</a></li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-aparat_pemerintahan_desa"
+                                               href="#">Surat Pengantar Pindah Datang (F-1.35)</a></li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-tanah_kas_desa" href="#">Formulir
+                                            Permohonan Pindah WNI Antar Provinsi (F-1.36)</a></li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-tanah_di_desa" href="#">Formulir
+                                            Permohonan Pindah Datang WNI Antar Provinsi (F-1.38)</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" id="administrasi-keuangan-kas_pembantu_kegiatan" href="#">Kelahiran</a>
+                                    <ul class="submenu dropdown-menu">
+                                        <li><a class="dropdown-item" id="administrasi-umum-peraturan_desa" href="#">Surat
+                                            Keterangan Kelahiran (F-2.01)</a></li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-keputusan_kepala_desa"
+                                               href="#">SPTJM Kebenaran dan Kelahiran</a></li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-inventaris_dan_kekayaan_desa"
+                                               href="#">SPTJM Kebenaran Sebagai Pasangan Suami Istri</a></li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-aparat_pemerintahan_desa"
+                                               href="#">Surat Pernyataan Belum Memiliki Akta Kelahiran</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" id="administrasi-keuangan-kas_umum" href="#">Kematian</a>
+                                    <ul class="submenu dropdown-menu">
+                                        <li><a class="dropdown-item" id="administrasi-umum-peraturan_desa" href="#">Surat
+                                            Keterangan Kematian (F-2.29)</a></li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-keputusan_kepala_desa"
+                                               href="#">Surat Kematian (A-5)</a></li>
+                                        <li><a class="dropdown-item" id="administrasi-umum-inventaris_dan_kekayaan_desa"
+                                               href="#">Surat Keterangan Penguburan</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" id="administrasi-penduduk_penduduk" href="#">Nikah</a>
+                            <ul class="submenu dropdown-menu">
+                                <li><a class="dropdown-item" id="administrasi-penduduk-mutasi_penduduk" href="#">Pengantar
+                                    Nikah (N1-N6)</a></li>
+                                <li><a class="dropdown-item" id="administrasi-penduduk-rekapitulasi_jumlah_penduduk"
+                                       href="#">Surat Keterangan Pernah Nikah</a></li>
+                                <li><a class="dropdown-item" id="administrasi-penduduk-penduduk_sementara" href="#">Surat
+                                    Keterangan Belum Pernah Nikah</a></li>
+                                <li><a class="dropdown-item" id="administrasi-penduduk-ktp_dan_buku_kk" href="#">Surat
+                                    Keterangan Duda/Janda</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item" id="administrasi-pembangunan_pembangunan" href="#">Pertanahan</a>
+                            <ul class="submenu dropdown-menu">
+                                <li><a class="dropdown-item" id="administrasi-pembangunan-rencana_kerja_pembangunan"
+                                       href="#">Surat Keterangan Pencocokan Sporadik</a></li>
+                                <li><a class="dropdown-item" id="administrasi-pembangunan-kegiatan_pembangunan"
+                                       href="#">Sporadik</a></li>
+                                <li><a class="dropdown-item" id="administrasi-pembangunan-inventaris_hasil_pembangunan"
+                                       href="#">Surat Keterangan Kepemilikan Tanah</a></li>
+                                <li><a class="dropdown-item" id="administrasi-pembangunan-kader_pemberdayaan_masyarakat"
+                                       href="#">Surat Keterangan Jaminan Rumah</a></li>
+                                <li><a class="dropdown-item" id="administrasi-pembangunan-kader_pemberdayaan_masyarakat"
+                                       href="#">Keterangan Ahli Waris</a></li>
+                                <li><a class="dropdown-item" id="administrasi-pembangunan-kader_pemberdayaan_masyarakat"
+                                       href="#">Keterangan Desa</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Pemerintah Desa
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" id="pemerintah_desa-visi_misi" href="#">Visi & Misi</a>
+                        <a class="dropdown-item" id="pemerintah_desa-pemerintah_desa" href="#">Pemerintah Desa</a>
+                        <a class="dropdown-item" id="pemerintah_desa-perangkat_desa" href="#">Perangkat Desa</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Potensi Desa
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" id="potensi_desa-pertanian" href="#">Pertanian</a>
+                        <a class="dropdown-item" id="potensi_desa-perkebunan" href="#">Perkebunan</a>
+                        <a class="dropdown-item" id="potensi_desa-perikanan" href="#">Perikanan</a>
+                        <a class="dropdown-item" id="potensi_desa-peternakan" href="#">Peternakan</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        PBB-P2
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" id="pbb-target" href="#">Target</a>
+                        <a class="dropdown-item" id="pbb-dhkp" href="#">DHKP</a>
+                        <a class="dropdown-item" id="pbb-penerimaan" href="#">Penerimaan</a>
+                        <a class="dropdown-item" id="pbb-laporan_mingguan" href="#">Laporan Mingguan</a>
+                        <a class="dropdown-item" id="pbb-total_realisasi" href="#">Total Realisasi</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Info Grafis APBDes
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" id="info_grafis-pendapatan" href="#">Pendapatan</a>
+                        <a class="dropdown-item" id="info_grafis-belanja" href="#">Belanja</a>
+                        <a class="dropdown-item" id="info_grafis-rincian_pembangunan" href="#">Rincian Pembangunan</a>
+                        <a class="dropdown-item" id="info_grafis-rincian_pengeluaran" href="#">Rincian Pengeluaran</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="section-content">
+
+</div>
+
+<footer class="tm-bg-gray pt-5 pb-3 tm-text-gray tm-footer">
+    <div class="container-fluid tm-container-small">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-12 px-5 mb-5">
+                <h3 class="tm-text-primary mb-4 tm-footer-title">Desa Lamasia Pantai</h3>
+                <p>Kunjungi Desa Kami!</p>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12 px-5 mb-5">
+                <!-- <h3 class="tm-text-primary mb-4 tm-footer-title">Our Links</h3>
+                          <ul class="tm-footer-links pl-0">
+                              <li><a href="#">Advertise</a></li>
+                              <li><a href="#">Support</a></li>
+                              <li><a href="#">Our Company</a></li>
+                              <li><a href="#">Contact</a></li>
+                          </ul> -->
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12 px-5 mb-1">
+                <ul class="tm-social-links d-flex justify-content-end pl-0 mb-1">
+                    <li class="mb-2"><a href="https://facebook.com"><i class="fab fa-facebook"></i></a></li>
+                    <li class="mb-2"><a href="https://twitter.com"><i class="fab fa-twitter"></i></a></li>
+                    <li class="mb-2"><a href="https://instagram.com"><i class="fab fa-instagram"></i></a></li>
+                    <li class="mb-2"><a href="https://pinterest.com"><i class="fab fa-pinterest"></i></a></li>
+                </ul>
+                <!-- <a href="#" class="tm-text-gray text-right d-block mb-2">Terms of Use</a>
+                          <a href="#" class="tm-text-gray text-right d-block">Privacy Policy</a> -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-7 col-12 px-5 mb-3">
+                Copyright 2020 Desa Lamasia Pantai. All rights reserved.
+            </div>
+            <div class="col-lg-4 col-md-5 col-12 px-5 text-right">
+                Designed by <a href="https://templatemo.com" class="tm-text-gray" rel="sponsored" target="_parent">TemplateMo</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="js/plugins.js"></script>
+<script>
+    $(window).on("load", function () {
+        $('body').addClass('loaded');
+    });
+
+    $(document).ready(function () {
+        $('#section-content').html(`<object data="main.html" style="width:100%;height:175vh;overflow:hidden" onload="this.width=screen.width;this.height=screen.height;"></object>`)
+
+        $('.dropdown-item').click(function () {
+            $('#section-content').empty()
+            let id = $(this).attr('id')
+            let path = id.replaceAll('-', '/')
+            path = 'pages/' + path + '.html'
+            console.log(path);
+            // $('#section-content').html('asfa')
+            $('#section-content').html(`<object data="${path}" style="width:100%;height:175vh;overflow:auto" onload="this.width=screen.width;this.height=screen.height;"></object>`)
+        })
+    });
+</script>
+</body>
+
+</html>
